@@ -448,7 +448,7 @@ export default function Page() {
               </div>
             )}
             <div className="mt-auto border-t border-black/20 text-[11px] text-black/70 px-3 py-2">
-              Flare Coston2 Testnet • Contract: 0xd914...9138
+              Flare Coston2 Testnet • Contract: 0x735E...07F9
             </div>
           </div>
         </WindowFrame>

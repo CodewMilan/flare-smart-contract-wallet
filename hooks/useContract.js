@@ -71,6 +71,15 @@ export function useContract(signer, isConnected) {
         // Don't set error for rate limiting, just log it - keep last known values
         return
       }
+      
+      // Handle contract not deployed
+      if (err?.message?.includes("Contract not deployed")) {
+        setError("Contract not found. Please verify the contract address.")
+        setContractBalance("0")
+        setOwner("Contract not deployed")
+        return
+      }
+      
       console.error("Error refreshing contract state:", err)
       setError(err.message || "Failed to load contract data")
     } finally {

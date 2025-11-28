@@ -147,11 +147,11 @@ simplewallet/
 
 ### Smart Contract
 
-- **Address**: `0xd9145CCE52D386f254917e481eB44e9943F39138`
+- **Address**: `0x735E060B08aB94905D50de4760c8f53594cc07F9`
 - **Network**: Flare Coston2 Testnet (Chain ID: 114)
 - **RPC URL**: `https://coston2-api.flare.network/ext/C/rpc`
 - **Contract Source**: Located in `contracts/contract.sol`
-- **Block Explorer**: [View Contract](https://coston2-explorer.flare.network/address/0xd9145CCE52D386f254917e481eB44e9943F39138)
+- **Block Explorer**: [View Contract](https://coston2-explorer.flare.network/address/0x735E060B08aB94905D50de4760c8f53594cc07F9)
 
 #### Contract Functions
 
@@ -212,7 +212,7 @@ The app includes intelligent rate limiting protection:
 2. Click the **Refresh** button in Account Overview
 3. Wait a few seconds - transactions may take time to confirm
 4. Check the transaction on [Coston2 Explorer](https://coston2-explorer.flare.network)
-5. View your contract: [0xd9145CCE52D386f254917e481eB44e9943F39138](https://coston2-explorer.flare.network/address/0xd9145CCE52D386f254917e481eB44e9943F39138)
+5. View your contract: [0x735E060B08aB94905D50de4760c8f53594cc07F9](https://coston2-explorer.flare.network/address/0x735E060B08aB94905D50de4760c8f53594cc07F9)
 
 ### Balance Not Updating
 
