@@ -163,7 +163,7 @@ export default function Page() {
       <header className="border-b border-black/40 bg-[#2f2f2f]">
         <div className="max-w-6xl mx-auto px-3 py-2 flex items-center gap-3">
           <div className={styles.logoBlock} aria-label="Flare Wallet logo">
-            <span className={styles.logoWord}>FLARE WALLET</span>
+            <span className={styles.logoWord}>A simple smart contract wallet built on the flare bootcamp</span>
           </div>
           <Separator orientation="vertical" className="h-6 bg-black/50" />
           <div className="text-sm text-white/80 hidden sm:block">

@@ -7,11 +7,12 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Flare Wallet - Simple Smart Contract Wallet',
+  description: 'A simple smart contract wallet built on the flare bootcamp',
   generator: 'v0.app',
   icons: {
-    icon: '/icon.svg',
+    icon: '/image.png',
+    apple: '/image.png',
   },
 }
 

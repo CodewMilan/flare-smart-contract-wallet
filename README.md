@@ -126,18 +126,22 @@ simplewallet/
 │   ├── page.tsx          # Main application page
 │   ├── layout.tsx        # Root layout
 │   └── globals.css        # Global styles
+├── artifacts/
+│   └── contract-abi.json # Generated ABI from contract.sol
 ├── components/
 │   ├── ui/               # Reusable UI components (shadcn/ui)
 │   ├── window-frame.tsx  # Draggable window component
 │   └── chat-panel.tsx    # Chat/transaction panel
+├── contracts/
+│   └── contract.sol      # Smart contract source code (actively used)
 ├── hooks/
 │   ├── useWallet.js      # Wallet connection and management
 │   └── useContract.js    # Smart contract interactions
 ├── lib/
 │   ├── flare.js          # Flare network configuration
-│   └── contract.js       # Contract instance and helpers
-├── contracts/
-│   └── contract.sol      # Smart contract source code
+│   └── contract.js       # Contract instance and helpers (imports ABI)
+├── scripts/
+│   └── compile-contract.js # Compiles contract.sol to generate ABI
 ├── styles/
 │   └── habbo.module.css  # Pixel-art CSS styles
 └── public/               # Static assets
@@ -150,7 +154,8 @@ simplewallet/
 - **Address**: `0x735E060B08aB94905D50de4760c8f53594cc07F9`
 - **Network**: Flare Coston2 Testnet (Chain ID: 114)
 - **RPC URL**: `https://coston2-api.flare.network/ext/C/rpc`
-- **Contract Source**: Located in `contracts/contract.sol`
+- **Contract Source**: Located in `contracts/contract.sol` (actively used)
+- **ABI Generation**: Automatically generated from `contract.sol` to `artifacts/contract-abi.json`
 - **Block Explorer**: [View Contract](https://coston2-explorer.flare.network/address/0x735E060B08aB94905D50de4760c8f53594cc07F9)
 
 #### Contract Functions
@@ -161,6 +166,17 @@ simplewallet/
 - `getBalance()` - View current contract balance
 - `owner()` - View contract owner address
 - `changeOwner(address _newOwner)` - Change contract owner (owner only)
+- `receive()` - Fallback function to accept plain FLR transfers
+
+#### Contract Compilation
+
+The contract ABI is automatically generated from `contracts/contract.sol`:
+
+1. **Edit the contract**: Modify `contracts/contract.sol`
+2. **Compile**: Run `npm run compile:contract` to generate the ABI
+3. **Auto-compilation**: The ABI is automatically generated when running `npm run dev` or `npm run build`
+
+The generated ABI is stored in `artifacts/contract-abi.json` and imported by `lib/contract.js`.
 
 ### Key Technologies
 
@@ -233,18 +249,33 @@ The app includes intelligent rate limiting protection:
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run dev` - Compile contract and start development server
+- `npm run build` - Compile contract and build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run compile:contract` - Compile `contracts/contract.sol` and generate ABI
 
 ### Adding New Features
 
 1. **Wallet Features**: Modify `hooks/useWallet.js`
 2. **Contract Features**: Modify `hooks/useContract.js` and `lib/contract.js`
-3. **Smart Contract**: Edit `contracts/contract.sol` (requires redeployment)
+3. **Smart Contract**: 
+   - Edit `contracts/contract.sol`
+   - Run `npm run compile:contract` to regenerate ABI
+   - Redeploy the contract to update the on-chain version
 4. **UI Components**: Add to `components/` directory
 5. **Styling**: Use Tailwind classes or modify `styles/habbo.module.css`
+
+### Working with the Smart Contract
+
+The application actively uses `contracts/contract.sol` as the source of truth:
+
+1. **Edit Contract**: Make changes to `contracts/contract.sol`
+2. **Compile**: Run `npm run compile:contract` to generate the ABI
+3. **Deploy**: Deploy the updated contract to Flare Coston2 testnet
+4. **Update Address**: Update `CONTRACT_ADDRESS` in `lib/contract.js` with the new deployment address
+
+The ABI is automatically imported from `artifacts/contract-abi.json` into `lib/contract.js`, ensuring the frontend always uses the correct interface matching your Solidity contract.
 
 ### Updating Contract Address
 
